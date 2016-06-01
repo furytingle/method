@@ -11,16 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::resource('group', 'GroupController');
     Route::resource('question', 'QuestionController');
     Route::resource('answer', 'AnswerController');
+    Route::resource('test', 'TestController');
+    Route::post('/admin/test/add', ['as' => 'admin.test.add', 'uses' => 'TestController@addQuestion']);
+    Route::post('/admin/test/remove', ['as' => 'admin.test.remove', 'uses' => 'TestController@removeQuestion']);
 });
+
+Route::get('/test/{id}', ['as' => 'test.pass', 'uses' => 'TestController@passTest']);
+Route::post('/result/store', ['as' => 'result.store', 'uses' => 'ResultController@store']);

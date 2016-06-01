@@ -10,6 +10,9 @@
             <li>
                 {{ link_to_route('admin.question.index', 'Вопросы', [], []) }}
             </li>
+            <li>
+                {{ link_to_route('admin.test.index', 'Тесты', [], []) }}
+            </li>
         </ul>
     </div>
 </nav>

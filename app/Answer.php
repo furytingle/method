@@ -14,4 +14,8 @@ class Answer extends Model
         'text', 'correct', 'question_id'
     ];
 
+    public function question()
+    {
+        return $this->belongsTo('App\Question');
+    }
 }

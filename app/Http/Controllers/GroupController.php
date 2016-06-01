@@ -96,6 +96,8 @@ class GroupController extends Controller
         $group->fill($data);
 
         $request->session()->flash('flash_message', 'Группа сохранена');
+
+        return redirect()->back();
     }
 
     /**

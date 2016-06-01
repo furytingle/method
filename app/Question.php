@@ -18,4 +18,9 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer');
     }
+
+    public function tests()
+    {
+        return $this->belongsToMany('App\Test', 'test_question');
+    }
 }

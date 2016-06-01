@@ -5,12 +5,12 @@
     @include('partial.error')
     @include('partial.success')
 
-    {{ link_to_route('admin.question.index', 'Назад', [], ['class' => 'btn btn-link']) }}
-
-    {{ Form::open(['route' => 'admin.answer.store', 'method' => 'post', 'role' => 'form']) }}
+    {{ link_to_route('admin.question.edit', 'Назад', ['id' => $question_id], ['class' => 'btn btn-link']) }}
 
     <div class="row">
         <div class="col-md-5">
+            {{ Form::open(['route' => 'admin.answer.store', 'method' => 'post', 'role' => 'form']) }}
+
             <div class="form-group">
                 {{ Form::label('text', 'Ответ') }}
                 {{ Form::textarea('text', '', ['class' => 'form-control']) }}

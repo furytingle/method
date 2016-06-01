@@ -17,6 +17,7 @@ class CreateResultsTable extends Migration
             $table->string('name');
             $table->integer('group_id')->unsigned();
             $table->integer('test_id')->unsigned();
+            $table->string('answers');
         });
 
         Schema::table('results', function ($table) {

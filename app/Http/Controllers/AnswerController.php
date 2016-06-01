@@ -92,9 +92,16 @@ class AnswerController extends Controller
 
         $data = $request->all();
 
-        $answer->fill($data);
+        $answer->text = $data['text'];
+        if (isset($data['correct'])) {
+            $answer->correct = $data['correct'];
+        } else {
+            $answer->correct = 0;
+        }
 
-        $request->session()->flash('flash_message', 'Ответ сохранен');
+        if ($answer->save()) {
+            $request->session()->flash('flash_message', 'Ответ сохранен');
+        }
 
         return redirect()->back();
     }

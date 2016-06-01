@@ -96,6 +96,8 @@ class QuestionController extends Controller
         $question->fill($data);
 
         $request->session()->flash('flash_message', 'Вопрос сохранен');
+
+        return redirect()->back();
     }
 
     /**
