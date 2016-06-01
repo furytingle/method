@@ -18,3 +18,9 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('group', 'GroupController');
+    Route::resource('question', 'QuestionController');
+    Route::resource('answer', 'AnswerController');
+});
