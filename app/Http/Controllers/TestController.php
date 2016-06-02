@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\Question;
 use App\TestQuestion;
 use Illuminate\Http\Request;
@@ -169,9 +170,11 @@ class TestController extends Controller
     public function passTest($id)
     {
         $test = Test::findOrFail($id);
+        $groups = Group::all();
 
         return view('test.pass', [
-            'test' => $test
+            'test' => $test,
+            'groups' => $groups
         ]);
     }
 }

@@ -13,6 +13,9 @@
             <li>
                 {{ link_to_route('admin.test.index', 'Тесты', [], []) }}
             </li>
+            <li>
+                {{ link_to_route('admin.result.index', 'Результаты', [], []) }}
+            </li>
         </ul>
     </div>
 </nav>

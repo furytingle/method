@@ -43,6 +43,9 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">На главную</a>
+                    </li>
                     @if(Auth::check())
                         <li>
                             <a href="{{ url('/admin/question') }}">Административная панель</a>
