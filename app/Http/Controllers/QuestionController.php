@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -91,9 +92,27 @@ class QuestionController extends Controller
     {
         $question = Question::findOrFail($id);
 
-        $data = $request->all();
+        $this->validate($request, [
+            'picture' => 'image|max:3000'
+        ]);
+
+        $data = $request->except(['picture']);
+
+        $path = 'upload/picture';
+
+        if ($request->hasFile('picture')) {
+            $picture = $request->file('picture');
+            $name = substr(md5($id), 0, 10);
+
+            $st = $picture->move($path, $name);
+        }
 
         $question->fill($data);
+        if ($data['type'] == 2) {
+            $answer = new Answer();
+
+            $answer->question_id = $question->id;
+        }
 
         $request->session()->flash('flash_message', 'Вопрос сохранен');
 

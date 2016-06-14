@@ -13,6 +13,14 @@
             {{ Form::open(['route' => 'admin.question.store', 'method' => 'post', 'role' => 'form']) }}
 
             <div class="form-group">
+                {{ Form::label('type', 'Тип вопроса') }}
+                <select class="form-control" id="type" name="type">
+                    <option value="1">Варианты ответа</option>
+                    <option value="2">Изображение и свой вариант</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 {{ Form::label('description', 'Вопрос') }}
                 {{ Form::textarea('description', '', ['class' => 'form-control']) }}
             </div>

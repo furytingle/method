@@ -9,11 +9,16 @@
 
     <div class="row">
         <div class="col-md-5">
-            {{ Form::model($question, ['route' => ['admin.question.update', $question->id], 'method' => 'PATCH', 'role' => 'form']) }}
+            {{ Form::model($question, ['route' => ['admin.question.update', $question->id], 'method' => 'PATCH', 'role' => 'form', 'files' => true]) }}
 
             <div class="form-group">
                 {{ Form::label('description', 'Вопрос') }}
                 {{ Form::textarea('description', null, ['class' => 'form-control']) }}
+            </div>
+
+            <div class="form-group">
+                {{ Form::label('picture', 'Картинка') }}
+                {{ Form::file('picture') }}
             </div>
 
             <button type="submit" class="btn btn-success" style="float: right;">Сохранить</button>

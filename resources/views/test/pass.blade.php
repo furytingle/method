@@ -32,13 +32,17 @@
             @foreach($test->questions as $question)
                 <div class="form-group">
                     <p>{{ $question->description }}</p>
-                    @foreach($question->answers as $answer)
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="question_{{ $question->id }}" value="{{ $answer->id }}">{{ $answer->text }}
-                            </label>
-                        </div>
-                    @endforeach
+                    @if($question->type == 2)
+                        <textarea class="form-control" name="question_"{{ $question->id }}></textarea>
+                    @else
+                        @foreach($question->answers as $answer)
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="question_{{ $question->id }}" value="{{ $answer->id }}">{{ $answer->text }}
+                                </label>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             @endforeach
 
